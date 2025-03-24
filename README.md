@@ -42,9 +42,9 @@ if you're looking at "lang.py" currently, you can see that at the top, there's a
 
 if you want to test that, try using the addon test in "ARCHIVE.md"
 
-if you want to make your own addon, clear the value in the dictionary and prepare a function, then go to "addons.py"
+if you want to make your own addon, clear the value in the dictionary and prepare a function, then go to "addons/template.py"
 
-keep the `s = sys.modules\["__main__"]`, and write out your function using `s.var` to access variables from lang
+keep the `s = sys.modules\["__main__"]`, and write out your function using `s.var`, var as generic variable, to access variables from lang
 
 then write out a program in "main.123", using "/" as your function
 
