@@ -1,6 +1,7 @@
 # numbers
  a little esolang i made for fun
 
+make sure to run "lang.py"
 
 ### coding in numbers
 
