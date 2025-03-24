@@ -2,7 +2,9 @@ import requests
 import os
 
 # import your addons here
-from addons.calculators import inp, plus, clear
+
+# from addons.file import functions
+
 # key is the character that runs the function, value is the function, imported above
 
 addonfunctions = {}
