@@ -2,9 +2,14 @@ import requests
 import os
 
 # import your addons here
-from addons import test
+from addons.calculators import inp, plus, clear
 # key is the character that runs the function, value is the function, imported above
-addonfunctions = {"/": test}
+addonfunctions = {
+    ">": inp,
+    "+": plus,
+    "#": clear
+}
+
 # import your addons here
 
 filesfolder = "packets"
