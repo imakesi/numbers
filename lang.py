@@ -4,10 +4,21 @@ import os
 # import your addons here
 
 # from addons.file import functions
+from addons.general import *
 
 # key is the character that runs the function, value is the function, imported above
 
-addonfunctions = {}
+addonfunctions = {
+    ">": inp,
+    "#": clear,
+    "_": get,
+    "+": plus,
+    "-": minus,
+    "*": mult,
+    "/": div,
+    "^": exp,
+    "~": root
+}
 
 # import your addons here
 
