@@ -1,5 +1,7 @@
 import sys
 
+s = sys.modules["__main__"]
+
 def test():
-    s = sys.modules["__main__"]
+    global s
     # your code here...
