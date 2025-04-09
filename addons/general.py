@@ -14,6 +14,13 @@ def clear():
     s.mem = [0 for i in range(int(s.memamt))]
 
 def get():
+    if s.alt:
+        txt = ""
+        for i in s.mem:
+            txt += chr(i)
+        res = requests.get(txt)
+        print(res.text)
+        return
     res = requests.get(s.packeturls[s.packetcur])
     print(res.text)
 

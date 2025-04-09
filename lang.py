@@ -54,6 +54,7 @@ def run(fname="main.123"):
             continue
         if altskipln > 0:
             altskipln -= 1
+            continue
 
         for i in line:
             if i == "0":
