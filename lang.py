@@ -17,7 +17,8 @@ addonfunctions = {
     "*": mult,
     "/": div,
     "^": exp,
-    "~": root
+    "~": root,
+    "h": hundred
 }
 
 # import your addons here

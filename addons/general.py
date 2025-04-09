@@ -52,3 +52,9 @@ def root():
         s.altvar = math.sqrt(s.mem[s.cur])
         return
     s.mem[s.cur] = math.sqrt(s.mem[s.cur])
+
+def hundred():
+    if s.alt:
+        s.mem[s.cur] += 110
+        return
+    s.mem[s.cur] += 100
