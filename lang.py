@@ -56,6 +56,9 @@ def run(fname="main.123"):
             altskipln -= 1
             continue
 
+        if line[0] == "~":
+            continue
+
         for i in line:
             if i == "0":
                 if alt:
