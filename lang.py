@@ -17,8 +17,10 @@ addonfunctions = {
     "*": mult,
     "/": div,
     "^": exp,
-    "~": root,
-    "h": hundred
+    "%": root,
+    "h": hundred,
+
+    ";": exit
 }
 
 # import your addons here
@@ -41,6 +43,7 @@ altskipln = 0
 
 def run(fname="main.123"):
     global mem, memamt, packetcur, packeturls, packetfiles, skipln, altskipln, alt, altvar, cur
+    global switchinpvar # SPECIAL!
     with open(fname) as file:
         lines = file.readlines()
     if lines[0].startswith("!"):

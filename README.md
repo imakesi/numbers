@@ -27,6 +27,8 @@ hopefully you can figure out what's going on here
 
 also, a special little clause, you can set the length of the memory. to do this, go to the first line, type "!", then your memory length as a number (the first line will be ignored if it starts with "!", because of my bad coding, so please don't do that error)
 
+another note is that "~" is used to initiate a comment (but only at the start)
+
 now these packets in the table are basically just functions, they are written in numbers itself, and can be in a file or sent back from a URL. the cursor memory system is mirrored for these as you can see in the table
 
 packets cousin, addons, are basically custom commands. they are written in python and are like the interpreter in "lang.py". i recommend either using the addons in "addons/general.py" or no addons at all, as sometimes addons can be overwritten as packets
