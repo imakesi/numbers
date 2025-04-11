@@ -98,9 +98,9 @@ and instead of +110, alternate h:
 
 `h33331h31h333333331h333333331.h.316`
 
-now i compacted this further logic wise, (instead of +8, +10 then -2, which is less characters):
+now i compacted this further logic wise, (instead of +8, +10 then -2, which is less characters and removing the last `1`):
 
-`h33331h31.h.441.h.441.h.316`
+`h33331h31.h.441.h.441.h.36`
 
 and we get "hello"!
 
