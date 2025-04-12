@@ -17,6 +17,12 @@ def inp():
         return
     s.mem[s.cur] = int(input(" > "))
 
+def ordinp():
+    if s.alt:
+        s.altvar = ord(str(int(input(" > "))))
+        return
+    s.mem[s.cur] = ord(str(int(input(" > "))))
+
 def clear():
     s.mem = [0 for i in range(int(s.memamt))]
 
@@ -30,6 +36,12 @@ def get():
         return
     res = requests.get(s.packeturls[s.packetcur])
     print(res.text)
+
+def alttransfer():
+    if s.alt:
+        s.mem[s.cur] = ord(str(s.altvar))
+        return
+    s.mem[s.cur] = s.altvar
 
 def plus():
     if s.alt:

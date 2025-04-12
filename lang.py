@@ -11,6 +11,7 @@ from addons.general import *
 addonfunctions = {
     "@": rand,
     ">": inp,
+    "<": ordinp,
     "#": clear,
     "_": get,
     "+": plus,
@@ -20,6 +21,7 @@ addonfunctions = {
     "^": exp,
     "%": root,
     "h": hundred,
+    ":": alttransfer,
 
     ";": exit
 }
