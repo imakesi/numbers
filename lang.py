@@ -124,9 +124,9 @@ def run(fname="main.123"):
             elif i == "8":
                 if alt:
                     res = requests.get(packeturls[packetcur])
-                    with open("placeholder.123", "w") as file:
+                    with open("hidden/placeholder.123", "w") as file:
                         file.write(res.text)
-                    run("placeholder.123")
+                    run("hidden/placeholder.123")
                     continue
                 run(f"{filesfolder}/{packetfiles[packetcur]}")
             elif i == "9":
