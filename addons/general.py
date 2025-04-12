@@ -16,13 +16,13 @@ def inp():
     if s.alt:
         try:
             s.altvar = int(input(" > "))
-        except TypeError:
-            rp("Please input a number.", style="red")
+        except ValueError:
+            rp("[red]Please input a number.[/red]")
         return
     try:
         s.mem[s.cur] = int(input(" > "))
-    except TypeError:
-        rp("Please input a number.", style="red")
+    except ValueError:
+        rp("[red]Please input a number.[/red]")
 
 def ordinp():
     if s.alt:
@@ -31,13 +31,13 @@ def ordinp():
                 s.mem[s.cur] = ord(i)
                 s.cur += 1
             s.cur -= 1
-        except TypeError:
-            rp("Please input a number.", style="red")
+        except ValueError:
+            rp("[red]Please input a number.[/red]")
         return
     try:
         s.mem[s.cur] = ord(str(int(input(" > "))))
-    except TypeError:
-        rp("Please input a 1-digit number.", style="red")
+    except ValueError:
+        rp("[red]Please input a 1-digit number.[/red]")
 
 def clear():
     s.mem = [0 for i in range(int(s.memamt))]

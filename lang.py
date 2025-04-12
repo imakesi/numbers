@@ -55,14 +55,14 @@ def run(fname="main.123"):
 
     if lines[0].strip().startswith("!"):
         if len(lines[0]) == 1:
-            rp(f"Line 1, {fname}\nDesired memory length not found.", style="red")
+            rp(f"[red]Line 1, {fname}\nDesired memory length not found.[/red]")
             exit()
         try:
             memamt = lines[0].strip()[1:]
             mem = [0 for i in range(int(memamt))]
             lines = lines[1:]
         except TypeError:
-            rp("Memory length is not a number.", style="red")
+            rp("[red]Memory length is not a number.[/red]")
             exit()
 
     for line in lines:
