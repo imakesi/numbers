@@ -2,6 +2,7 @@ import sys
 import requests
 import math
 import random
+from rich import print as rp
 
 s = sys.modules["__main__"]
 
@@ -13,15 +14,30 @@ def rand():
 
 def inp():
     if s.alt:
-        s.altvar = int(input(" > "))
+        try:
+            s.altvar = int(input(" > "))
+        except TypeError:
+            rp("Please input a number.", style="red")
         return
-    s.mem[s.cur] = int(input(" > "))
+    try:
+        s.mem[s.cur] = int(input(" > "))
+    except TypeError:
+        rp("Please input a number.", style="red")
 
 def ordinp():
     if s.alt:
-        s.altvar = ord(str(int(input(" > "))))
+        try:
+            for i in str(int(input(" > "))):
+                s.mem[s.cur] = ord(i)
+                s.cur += 1
+            s.cur -= 1
+        except TypeError:
+            rp("Please input a number.", style="red")
         return
-    s.mem[s.cur] = ord(str(int(input(" > "))))
+    try:
+        s.mem[s.cur] = ord(str(int(input(" > "))))
+    except TypeError:
+        rp("Please input a 1-digit number.", style="red")
 
 def clear():
     s.mem = [0 for i in range(int(s.memamt))]

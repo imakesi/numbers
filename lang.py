@@ -1,5 +1,6 @@
 import requests
 import os
+from rich import print as rp
 
 # import your addons here
 
@@ -48,12 +49,24 @@ def run(fname="main.123"):
     global mem, memamt, packetcur, packeturls, packetfiles, skipln, altskipln, alt, altvar, cur
     with open(fname) as file:
         lines = file.readlines()
-    if lines[0].startswith("!"):
-        memamt = lines[0][1:]
-        mem = [0 for i in range(int(memamt))]
-        lines = lines[1:]
+
+    if lines == []:
+        return
+
+    if lines[0].strip().startswith("!"):
+        if len(lines[0]) == 1:
+            rp(f"Line 1, {fname}\nDesired memory length not found.", style="red")
+            exit()
+        try:
+            memamt = lines[0].strip()[1:]
+            mem = [0 for i in range(int(memamt))]
+            lines = lines[1:]
+        except TypeError:
+            rp("Memory length is not a number.", style="red")
+            exit()
 
     for line in lines:
+        line = line.strip()
         if skipln:
             skipln = False
             continue
