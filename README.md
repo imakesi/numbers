@@ -40,7 +40,7 @@ if you haven't already, open vscode and use `git clone https://github.com/imakes
 
 go to "main.123", this is the esolang code that "lang.py" interprets
 
-for this example, i'll just make it output "hello". the way this works is 6 outputs the chr values of all of the memory, so if we fill up the memory with the ascii values for "hello" (104 101 108 108 111), we can use command `6` to output "hello" into the console.
+for this example, i'll just make it output "hello". the way this works is `6` outputs the chr values of all of the memory, so if we fill up the memory with the ascii values for "hello" (104 101 108 108 111), we can use command `6` to output "hello" into the console.
 
 if you use the table, you can see that alternate `3` adds 10 to the value, so that's an easy way to get to 100, which is common in the ascii value of lowercase letters
 
