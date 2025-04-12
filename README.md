@@ -62,22 +62,27 @@ this is good, but only one out of the five letters, so if we apply the same logi
 .3333333333.
 3333
 1
+~ ^ 104, h
 
 .3333333333.
 3
 1
+~ ^ 101, e
 
 .3333333333.
 33333333
 1
+~ ^ 108, l
 
 .3333333333.
 33333333
 1
+~ ^ 108, l
 
 .33333333333.
 3
 1
+~ ^ 111, o
 
 6
 ```
