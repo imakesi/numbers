@@ -9,6 +9,7 @@ from addons.general import *
 # key is the character that runs the function, value is the function, imported above
 
 addonfunctions = {
+    "@": rand,
     ">": inp,
     "#": clear,
     "_": get,

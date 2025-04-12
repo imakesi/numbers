@@ -1,8 +1,15 @@
 import sys
 import requests
 import math
+import random
 
 s = sys.modules["__main__"]
+
+def rand():
+    if s.alt:
+        s.altvar = random.randint(1, 10)
+        return
+    s.mem[s.cur] = random.randint(1, 10)
 
 def inp():
     if s.alt:
