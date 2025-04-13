@@ -41,12 +41,12 @@ no packets, no addons
 no packets
 
 ```python
-# addons #
+9 addons 9
 def test():
     s = sys.modules["__main__"]
     s.mem[s.cur] += 101
 
-# "/": test #
+9 "/": test 9
 ```
 
 --_-_-_-_-_-_-_-_-
@@ -56,53 +56,12 @@ def test():
 ```
 !2
 
->1>2.+.#.5.
+>1>2.+.9.5.
 ```
 
 no packets
 
-```python
-# addons #
-import sys
-
-s = sys.modules["__main__"]
-
-def inp():
-    if s.alt:
-        s.altvar = int(input(" > "))
-        return
-    s.mem[s.cur] = int(input(" > "))
-
-def plus():
-    if s.alt:
-        s.altvar = s.mem[s.cur] + s.mem[s.cur+1]
-        return
-    s.mem[s.cur] += s.mem[s.cur+1]
-
-def clear():
-    s.mem = [0 for i in range(int(s.memamt))]
-
-# ">": inp #
-# "+": plus #
-# "#": clear #
-```
-
---_-_-_-_-_-_-_-_-
-
-### alt conditional
-
-```
-h133.9.
-6
-6
-6
-
-#9
-the 6 on line 4 decides whether it outputs or not, because this skips the first two lines. the smiley is the memory equal to 2
-```
-
-no packets
-general.py
+general.py addons
 
 --_-_-_-_-_-_-_-_-
 
@@ -141,7 +100,7 @@ general.py
 
 --_-_-_-_-_-_-_-_-
 
-### guess the number
+999 guess the number
 
 ```
 !43
@@ -152,7 +111,7 @@ general.py
 .333.331h.44.33331h.444.331h.444.41
 .333.331h.44.441h.44.333331h.44.4441h.444.44441h.444.41h.44.331
 .333.331.3333.333331
-6#0
+690
 .h3.31.h.31.h3.4441
 .333.331h3331h31.h3.44441
 .333.331.33333.31
@@ -162,15 +121,15 @@ general.py
 .333.331h4441
 .333.331.33333.41.3333.333331h1h333331h3331h333331.h3.44441
 .333.331.h.1.h3.4441.h.41h441h31.h.33331
-6#0
+690
 
 ~ main loop ~
 .h.1.h3.4441.h.41h441h31.h.33331.333.331.33333.4
-6#08
+6908
 .h.1.h3.4441.h.41h441h31.h.33331.333.331.33333.
-6#08
+6908
 .h.1.h3.4441.h.41h441h31.h.33331.333.331.33333.3
-6#08
+6908
 ```
 
 packets
@@ -183,7 +142,7 @@ h3331.h.441h333331.h3.44441h41h33331.33333.44441
 .33333.4441
 <1
 .33333.4441
-.:_.#0
+.:_.90
 ```
 
 general addons

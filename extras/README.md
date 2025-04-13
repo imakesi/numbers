@@ -20,7 +20,7 @@ the commands:
 | 6 | print chr values of memory  | print chr value of alternate var     |
 | 7 | increment packet cursor     | decrement packet cursor              |
 | 8 | run packet file             | run packet url                       |
-| 9 | skip next line if value = 0 | skip next value lines if alt var = 0 |
+| 9 | clear memory                | clear alternate var                  |
 | . | toggle alt                  | toggle alt                           |
 
 hopefully you can figure out what's going on here

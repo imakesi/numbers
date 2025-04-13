@@ -13,7 +13,7 @@ addonfunctions = {
     "@": rand,
     ">": inp,
     "<": ordinp,
-    "#": clear,
+    "=": strinp,
     "_": get,
     "+": plus,
     "-": minus,
@@ -46,7 +46,7 @@ skipln = False
 altskipln = 0
 
 def run(fname="main.123"):
-    global mem, memamt, packetcur, packeturls, packetfiles, skipln, altskipln, alt, altvar, cur
+    global mem, memamt, packetcur, packeturls, packetfiles, alt, altvar, cur
     with open(fname) as file:
         lines = file.readlines()
 
@@ -67,14 +67,8 @@ def run(fname="main.123"):
 
     for line in lines:
         line = line.strip()
-        if skipln:
-            skipln = False
-            continue
-        if altskipln > 0:
-            altskipln -= 1
-            continue
 
-        if line[0] == "~":
+        if line.startswith("~"):
             continue
 
         for i in line:
@@ -131,11 +125,9 @@ def run(fname="main.123"):
                 run(f"{filesfolder}/{packetfiles[packetcur]}")
             elif i == "9":
                 if alt:
-                    if altvar == 0:
-                        altskipln = mem[cur]
+                    altvar = 0
                     continue
-                if mem[cur] == 0:
-                    skipln = True
+                mem = [0 for i in range(int(memamt))]
             elif i == ".":
                 alt = not alt
             elif i in addonfunctions.keys():

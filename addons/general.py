@@ -39,8 +39,11 @@ def ordinp():
     except ValueError:
         rp("[red]Please input a 1-digit number.[/red]")
 
-def clear():
-    s.mem = [0 for i in range(int(s.memamt))]
+def strinp():
+    for i in input(" > "):
+        s.mem[s.cur] = ord(i)
+        s.cur += 1
+    s.cur -= 1
 
 def get():
     if s.alt:
