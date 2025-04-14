@@ -165,6 +165,10 @@ addonfunctions = {
 
 in this example, i used "!" to represent the test command, so if you run "!" in the language, you will get the desired function (setting value to 727).
 
+also, on the topic of addons, here are the addons in my default settings:
+
+
+
 ---
 
 if you want to know some programs, go to "ARCHIVE.md" or "archivebutdumb.txt"
