@@ -23,6 +23,7 @@ addonfunctions = {
     "%": root,
     "h": hundred,
     ":": alttransfer,
+    "i": infinite,
 
     ";": exit
 }
@@ -35,6 +36,8 @@ packeturls = []
 
 packetcur = 0
 
+mainrunner = "main.123"
+
 memamt = 50
 mem = [0 for i in range(memamt)]
 cur = 0
@@ -45,7 +48,7 @@ altvar = 0
 skipln = False
 altskipln = 0
 
-def run(fname="main.123"):
+def run(fname=mainrunner, ignore=[]):
     global mem, memamt, packetcur, packeturls, packetfiles, alt, altvar, cur
     with open(fname) as file:
         lines = file.readlines()
@@ -67,6 +70,9 @@ def run(fname="main.123"):
 
     for line in lines:
         line = line.strip()
+
+        for i in ignore:
+            line.replace(i, "")
 
         if line.startswith("~"):
             continue

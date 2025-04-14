@@ -100,7 +100,7 @@ general.py
 
 --_-_-_-_-_-_-_-_-
 
-999 guess the number
+### guess the number
 
 ```
 !43
@@ -169,3 +169,31 @@ app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
 ```
+
+--_-_-_-_-_-_-_-_-
+
+### Hello, \[Name\]!
+
+```
+!100
+
+h.4.4441h33331h4441.h3.44441.3333.41.h3.444441.333.331.h3.31.h.31.h3.4441.h.33331.333.331.h.1h4441.h.41h31h.4444.33369
+h.444.331h31.h.441.h.441.h.31.3333.33331.333.331=1.333.33316
+```
+
+no packets
+general addons
+
+--_-_-_-_-_-_-_-_-
+
+### Cat Program
+
+```
+!100
+09=6i
+```
+
+no packets
+general again
+
+--_-_-_-_-_-_-_-_-

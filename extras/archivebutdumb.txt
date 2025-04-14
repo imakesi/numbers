@@ -15,3 +15,8 @@ h444
 6
 
 ---
+
+tiny lil' cat program
+
+!100
+=6;

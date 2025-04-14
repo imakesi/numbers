@@ -45,6 +45,9 @@ def strinp():
         s.cur += 1
     s.cur -= 1
 
+def infinite():
+    s.run()
+
 def get():
     if s.alt:
         txt = ""
