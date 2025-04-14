@@ -197,3 +197,13 @@ no packets
 general again
 
 --_-_-_-_-_-_-_-_-
+
+### a walk down the ASCII catalog
+
+```
+356.=.i
+```
+
+general.py
+
+--_-_-_-_-_-_-_-_-

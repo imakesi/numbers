@@ -20,3 +20,18 @@ tiny lil' cat program
 
 !100
 =6;
+
+---
+
+incrementer infinite
+
+35i
+
+---
+
+nothing
+
+i
+
+---
+

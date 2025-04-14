@@ -40,6 +40,9 @@ def ordinp():
         rp("[red]Please input a 1-digit number.[/red]")
 
 def strinp():
+    if s.alt:
+        s.altvar = input(" > ")
+        return
     for i in input(" > "):
         s.mem[s.cur] = ord(i)
         s.cur += 1

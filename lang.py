@@ -21,8 +21,8 @@ addonfunctions = {
     "/": div,
     "^": exp,
     "%": root,
-    "h": hundred,
     ":": alttransfer,
+    "h": hundred,
     "i": infinite,
 
     ";": exit
@@ -48,7 +48,7 @@ altvar = 0
 skipln = False
 altskipln = 0
 
-def run(fname=mainrunner, ignore=[]):
+def run(fname=mainrunner, ignore=[], ignore_reset=False):
     global mem, memamt, packetcur, packeturls, packetfiles, alt, altvar, cur
     with open(fname) as file:
         lines = file.readlines()
@@ -56,7 +56,7 @@ def run(fname=mainrunner, ignore=[]):
     if lines == []:
         return
 
-    if lines[0].strip().startswith("!"):
+    if lines[0].strip().startswith("!") and not ignore_reset:
         if len(lines[0]) == 1:
             rp(f"[red]Line 1, {fname}\nDesired memory length not found.[/red]")
             exit()
@@ -67,6 +67,9 @@ def run(fname=mainrunner, ignore=[]):
         except TypeError:
             rp("[red]Memory length is not a number.[/red]")
             exit()
+
+    if ignore_reset:
+        lines = lines[1:]
 
     for line in lines:
         line = line.strip()
@@ -128,7 +131,7 @@ def run(fname=mainrunner, ignore=[]):
                         file.write(res.text)
                     run("hidden/placeholder.123")
                     continue
-                run(f"{filesfolder}/{packetfiles[packetcur]}")
+                run(f"{filesfolder}/{packetfiles[packetcur]}", ignore_reset=True)
             elif i == "9":
                 if alt:
                     altvar = 0
