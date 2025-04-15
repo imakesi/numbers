@@ -29,9 +29,15 @@ incrementer infinite
 
 ---
 
-nothing
+nothing (infinitely)
 
 i
 
 ---
 
+rooter
+
+!1
+>%5;
+
+---
