@@ -109,3 +109,22 @@ def hundred():
         s.mem[s.cur] += 110
         return
     s.mem[s.cur] += 100
+
+generaladdonfunctions = {
+    "@": rand,
+    ">": inp,
+    "<": ordinp,
+    "=": strinp,
+    "_": get,
+    "+": plus,
+    "-": minus,
+    "*": mult,
+    "/": div,
+    "^": exp,
+    "%": root,
+    ":": alttransfer,
+    "h": hundred,
+    "i": infinite,
+
+    ";": exit
+}

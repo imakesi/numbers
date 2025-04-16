@@ -150,23 +150,42 @@ def test():
     # your code here...
     if s.alt:
         s.altvar = 727
+        return
     s.mem[s.cur] = 727
 ```
 
-now, add that to "lang.py" with this:
+add the specified command names
 
 ```python
-from addons.template import test
+import sys
 
-addonfunctions = {
+s = sys.modules["__main__"]
+
+def test():
+    # your code here...
+    if s.alt:
+        s.altvar = 727
+        return
+    s.mem[s.cur] = 727
+
+testaddonfunctions = {
     "!": test
 }
 ```
 
 in this example, i used "!" to represent the test command, so if you run "!" in the language, you will get the desired function (setting value to 727).
 
-also, on the topic of addons, here are the addons in my default settings:
+now, add that to "lang.py" with this:
 
+```python
+from addons.template import test, testaddonfunctions
+
+addonfunctions = {}
+addonfunctions.update(testaddonfunctions)
+```
+
+if you're making an addon, don't repeat commands, as it will overwrite or be overwritten (make sure to not conflict with "general.py" addons)
+if you're using an addon, and it conflicts with other ones you're using, change the values
 ---
 
 if you want to know some programs, go to "ARCHIVE.md" or "archivebutdumb.txt"

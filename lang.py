@@ -8,25 +8,10 @@ from rich import print as rp
 from addons.general import *
 
 # key is the character that runs the function, value is the function, imported above
+# generaladdonfunctions in general
 
-addonfunctions = {
-    "@": rand,
-    ">": inp,
-    "<": ordinp,
-    "=": strinp,
-    "_": get,
-    "+": plus,
-    "-": minus,
-    "*": mult,
-    "/": div,
-    "^": exp,
-    "%": root,
-    ":": alttransfer,
-    "h": hundred,
-    "i": infinite,
-
-    ";": exit
-}
+addonfunctions = {}
+addonfunctions.update(generaladdonfunctions)
 
 # import your addons here
 
