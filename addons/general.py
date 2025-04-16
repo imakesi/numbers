@@ -2,6 +2,8 @@ import sys
 import requests
 import math
 import random
+import importlib.util
+from pathlib import Path
 from rich import print as rp
 
 s = sys.modules["__main__"]

@@ -1,5 +1,6 @@
 # numbers
  a little esolang i made for fun
+ one character, one command
 
 make sure to run "lang.py"
 
