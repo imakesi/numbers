@@ -13,5 +13,5 @@ def lgt():
         print("guess is too small...")
 
 apiaddonfunctions = {
-    "ʘ": lgt
+    "ƒ": lgt
 }

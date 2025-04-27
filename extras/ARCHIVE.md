@@ -1,18 +1,17 @@
 # PROGRAM ARCHIVE
 
-### "hello"
+### hello, world
 
 ```
-!5
-8333318318.3.4418.3.4418.3.36
+!12
+h33331h31.h.441.h.441.h.31
+.3333.33331.333.331
+.h3.41.h.31.h.33331.h.441h6;
+
+~ hello, world
 ```
 
-(packets: "plus100.123")
-```
-.3333333333.
-```
-
-no addons
+general addons
 
 --_-_-_-_-_-_-_-_-
 
@@ -171,7 +170,7 @@ app.listen(port, () => {
 ```
 
 UPDATE: As of 1.0.1, I made APIs for specific programs
-ʘ can replace the whole get thing
+ƒ can replace the whole get thing
 
 ```
 !43
@@ -196,11 +195,11 @@ UPDATE: As of 1.0.1, I made APIs for specific programs
 
 ~ main loop ~
 .h.1.h3.4441.h.41h441h31.h.33331.333.331.33333.4
-690<ʘ9
+690<ƒ9
 .h.1.h3.4441.h.41h441h31.h.33331.333.331.33333.
-690<ʘ9
+690<ƒ9
 .h.1.h3.4441.h.41h441h31.h.33331.333.331.33333.3
-690<ʘ9
+690<ƒ9
 ```
 
 --_-_-_-_-_-_-_-_-

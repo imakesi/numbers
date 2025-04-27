@@ -5,6 +5,7 @@ import random
 import importlib.util
 from pathlib import Path
 from rich import print as rp
+from time import sleep
 
 s = sys.modules["__main__"]
 
