@@ -7,7 +7,6 @@ from rich import print as rp
 # from addons.file import functions
 from addons.general import *
 from extras.addons.filecontrol import *
-from extras.addons.myownapis import * # feel free to remove this one
 
 # key is the character that runs the function, value is the function, imported above
 # generaladdonfunctions in general
@@ -15,7 +14,6 @@ from extras.addons.myownapis import * # feel free to remove this one
 addonfunctions = {}
 addonfunctions.update(generaladdonfunctions)
 addonfunctions.update(fileaddonfunctions)
-addonfunctions.update(apiaddonfunctions) # feel free to remove this one
 
 # import your addons here
 
