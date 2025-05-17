@@ -16,6 +16,8 @@ def rand():
     s.mem[s.cur] = random.randint(1, 10)
 
 def inp():
+    s.sendevent("INP")
+
     if s.alt:
         try:
             s.altvar = int(input(" > "))
@@ -28,6 +30,8 @@ def inp():
         rp("[red]Please input a number.[/red]")
 
 def ordinp():
+    s.sendevent("INP")
+
     if s.alt:
         try:
             for i in str(int(input(" > "))):
@@ -43,6 +47,8 @@ def ordinp():
         rp("[red]Please input a 1-digit number.[/red]")
 
 def strinp():
+    s.sendevent("INP")
+
     if s.alt:
         s.altvar = input(" > ")
         return
@@ -52,9 +58,12 @@ def strinp():
     s.cur -= 1
 
 def infinite():
+    s.sendevent("INF")
     s.run()
 
 def get():
+    s.sendevent("REQ")
+
     if s.alt:
         txt = ""
         for i in s.mem:
@@ -72,36 +81,48 @@ def alttransfer():
     s.mem[s.cur] = s.altvar
 
 def plus():
+    s.sendevent("CAL")
+
     if s.alt:
         s.altvar = s.mem[s.cur] + s.mem[s.cur+1]
         return
     s.mem[s.cur] += s.mem[s.cur+1]
 
 def minus():
+    s.sendevent("CAL")
+
     if s.alt:
         s.altvar = s.mem[s.cur] - s.mem[s.cur+1]
         return
     s.mem[s.cur] -= s.mem[s.cur+1]
 
 def mult():
+    s.sendevent("CAL")
+
     if s.alt:
         s.altvar = s.mem[s.cur] * s.mem[s.cur+1]
         return
     s.mem[s.cur] *= s.mem[s.cur+1]
 
 def div():
+    s.sendevent("CAL")
+
     if s.alt:
         s.altvar = s.mem[s.cur] / s.mem[s.cur+1]
         return
     s.mem[s.cur] /= s.mem[s.cur+1]
 
 def exp():
+    s.sendevent("CAL")
+
     if s.alt:
         s.altvar = s.mem[s.cur] ** s.mem[s.cur+1]
         return
     s.mem[s.cur] **= s.mem[s.cur+1]
 
 def root():
+    s.sendevent("CAL")
+
     if s.alt:
         s.altvar = math.sqrt(s.mem[s.cur])
         return
@@ -131,3 +152,12 @@ generaladdonfunctions = {
 
     ";": exit
 }
+
+"""
+Events
+
+INP - input
+INF - infinite loop
+REQ - http request
+CAL - calculation
+"""

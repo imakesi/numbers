@@ -1,5 +1,6 @@
 import requests
 import os
+import contextlib
 from rich import print as rp
 
 # import your addons here
@@ -25,6 +26,10 @@ packetcur = 0
 
 mainrunner = "main.123"
 
+eventrunner = "main.456"
+eventfunctions = {}
+potentialLoop = False
+
 memamt = 50
 mem = [0 for i in range(memamt)]
 cur = 0
@@ -35,28 +40,38 @@ altvar = 0
 skipln = False
 altskipln = 0
 
-def run(fname=mainrunner, ignore=[], ignore_reset=False):
-    global mem, memamt, packetcur, packeturls, packetfiles, alt, altvar, cur
+def sendevent(target):
+    global potentialLoop, eventfunctions
+
+    with contextlib.suppress(Exception):
+        with open("hidden/placeholder.123", "w") as file:
+            file.write(eventfunctions[target])
+        run("hidden/placeholder.123", ignoreEvent=(not potentialLoop))
+
+def run(fname=mainrunner, ignore=[], ignoreEvent=False):
+    global mem, memamt, packetcur, packeturls, packetfiles, alt, altvar, cur, eventfunctions, potentialLoop
     with open(fname) as file:
         lines = file.readlines()
 
     if lines == []:
         return
 
-    if lines[0].strip().startswith("!") and not ignore_reset:
+    if lines[0].strip().startswith("!"):
         if len(lines[0]) == 1:
             rp(f"[red]Line 1, {fname}\nDesired memory length not found.[/red]")
             exit()
         try:
             memamt = lines[0].strip()[1:]
-            mem = [0 for i in range(int(memamt))]
+            if memamt > len(mem):
+                for i in range(memamt - len(mem)):
+                    mem.append(0)
+            if memamt < len(mem):
+                for i in range(len(mem) - memamt):
+                    mem.pop()
             lines = lines[1:]
         except TypeError:
             rp("[red]Memory length is not a number.[/red]")
             exit()
-
-    if ignore_reset:
-        lines = lines[1:]
 
     for line in lines:
         line = line.strip()
@@ -94,11 +109,17 @@ def run(fname=mainrunner, ignore=[], ignore_reset=False):
                     continue
                 mem[cur] -= 1
             elif i == "5":
+                if not ignoreEvent:
+                    sendevent("OUT")
+
                 if alt:
                     print(altvar)
                     continue
                 print(mem[cur])
             elif i == "6":
+                if not ignoreEvent:
+                    sendevent("OUT")
+
                 if alt:
                     print(chr(altvar))
                     continue
@@ -107,11 +128,17 @@ def run(fname=mainrunner, ignore=[], ignore_reset=False):
                     txt += chr(x)
                 print(txt)
             elif i == "7":
+                if not ignoreEvent:
+                    sendevent("PAC")
+
                 if alt:
                     packetcur -= 1
                     continue
                 packetcur += 1
             elif i == "8":
+                if not ignoreEvent:
+                    sendevent("PAC")
+
                 if alt:
                     res = requests.get(packeturls[packetcur])
                     with open("hidden/placeholder.123", "w") as file:
@@ -120,6 +147,9 @@ def run(fname=mainrunner, ignore=[], ignore_reset=False):
                     continue
                 run(f"{filesfolder}/{packetfiles[packetcur]}", ignore_reset=True)
             elif i == "9":
+                if not ignoreEvent:
+                    sendevent("CLR")
+
                 if alt:
                     altvar = 0
                     continue
@@ -128,6 +158,9 @@ def run(fname=mainrunner, ignore=[], ignore_reset=False):
                 alt = not alt
             elif i in addonfunctions.keys():
                 addonfunctions[i]()
+            
+            if i in eventfunctions and not ignoreEvent:
+                sendevent(i)
 
 # cursor = 0 / value = 0
 # cursor += 1 / altvar += 1
@@ -141,4 +174,41 @@ def run(fname=mainrunner, ignore=[], ignore_reset=False):
 # skip next line if value is 0 / skip next value lines if altvar is 0
 # toggle alt
 
+# event listeners #
+with open(eventrunner) as file:
+    lines = file.readlines()
+
+for line in lines:
+    line = line.strip()
+    line = line.split("~")[0]
+    
+    if line == "":
+        continue
+
+    if line.startswith("UNIGNORE "):
+        potentialLoop = True
+        line = line.split("UNIGNORE ")[1]
+    elif line.startswith("IGNORE "):
+        potentialLoop = False
+        line = line.split("IGNORE ")[1]
+
+    node = line[0]
+
+    if node == "*":
+        target = line[1]
+        func = line[1:].split(":")[1]
+        eventfunctions[target] = func
+    elif node == "#":
+        target = line[1:4]
+        func = line[1:].split(":")[1]
+        eventfunctions[target] = func
+
 run()
+
+"""
+EVENTS
+
+OUT - something printed
+PAC - something about packets
+CLR - mem cleared
+"""

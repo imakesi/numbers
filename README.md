@@ -187,6 +187,49 @@ addonfunctions.update(testaddonfunctions)
 
 if you're making an addon, don't repeat commands, as it will overwrite or be overwritten (make sure to not conflict with "general.py" addons)
 if you're using an addon, and it conflicts with other ones you're using, change the values
+
+good practice is also using events
+
+---
+
+### events
+
+the file extension 123's sibling is 456, and this file is basically the event listener
+
+go to main.456
+
+right now, the only 2 nodes are * and #. the * node takes one character as input and takes commands as target. # takes 3 characters and is stuff like "REQ", "CLR", you can find at the bottom of any file with functions (addons, or lang.py)
+
+the target is what it looks for and after the colon is in the language and what it runs
+
+the syntax is:
+
+\[node\] \[target\] : \[function\]
+
+so basically, if you're gonna link it so that every time 3 is ran, 5 is ran:
+
+*3:5
+
+whenever 3 runs in the main script, it runs 5
+
+if you want to take a different approach, so that when it clears the memory, it adds 5:
+
+\#CLR:33333
+
+another thing is that, if you want events to run in one of your event triggers, allowing loops, toggle it like this
+
+UNIGNORE \[node and code\] ~ allows loops
+
+then start ignoring again like this
+
+IGNORE \[node and code\] ~ stops loops
+
+
+
+you can probably do something wild with this, but i haven't found it yet
+
+go wild
+
 ---
 
 if you want to know some programs, go to "ARCHIVE.md" or "archivebutdumb.txt"
