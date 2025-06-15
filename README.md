@@ -198,7 +198,7 @@ the file extension 123's sibling is 456, and this file is basically the event li
 
 go to main.456
 
-right now, the only 2 nodes are * and #. the * node takes one character as input and takes commands as target. # takes 3 characters and is stuff like "REQ", "CLR", you can find at the bottom of any file with functions (addons, or lang.py)
+right now, the only 3 nodes are *, #, and &. the * node takes one character as input and takes commands as target. # takes 3 characters and is stuff like "REQ", "CLR", you can find at the bottom of any file with functions (addons, or lang.py). & is like # but dynamic
 
 the target is what it looks for and after the colon is in the language and what it runs
 
@@ -224,7 +224,10 @@ then start ignoring again like this
 
 IGNORE \[node and code\] ~ stops loops
 
+also after your node and code, you can do emit. building off `*3:5` for example:
 
+&COOLEVENTNAME:333333333333333333333333333333333333333333333335
+*3:5 emit COOLEVENTNAME
 
 you can probably do something wild with this, but i haven't found it yet
 

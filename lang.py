@@ -28,7 +28,6 @@ mainrunner = "main.123"
 
 eventrunner = "main.456"
 eventfunctions = {}
-potentialLoop = False
 
 memamt = 50
 mem = [0 for i in range(memamt)]
@@ -41,15 +40,63 @@ skipln = False
 altskipln = 0
 
 def sendevent(target):
-    global potentialLoop, eventfunctions
+    global eventfunctions
 
+    runlater = False
     with contextlib.suppress(Exception):
         with open("hidden/placeholder.123", "w") as file:
-            file.write(eventfunctions[target])
-        run("hidden/placeholder.123", ignoreEvent=(not potentialLoop))
+            file.write(eventfunctions[target][0])
+            if len(eventfunctions[target]) == 2:
+                runlater = True
+        run("hidden/placeholder.123", origin="event")
+        if runlater:
+            sendevent(eventfunctions[target][1], origin="event")
+            runlater = False
 
-def run(fname=mainrunner, ignore=[], ignoreEvent=False):
-    global mem, memamt, packetcur, packeturls, packetfiles, alt, altvar, cur, eventfunctions, potentialLoop
+# event listeners #
+with open(eventrunner) as file:
+    lines = file.readlines()
+
+for line in lines:
+    line = line.strip()
+    line = line.split("~")[0]
+    
+    if line == "":
+        continue
+
+    node = line[0]
+
+    if node == "*":
+        target = line[1]
+        func = line[1:].split(":")[1]
+        
+        output = [func]
+
+        eventfunctions[target] = output
+    elif node == "#":
+        target = line[1:4]
+        func = line[1:].split(":")[1]
+
+        output = [func]
+
+        eventfunctions[target] = output
+        
+    elif node == "&":
+        target = line[1:].split(":")[0]
+        func = line[1:].split(":")[1]
+
+        output = [func]
+
+        eventfunctions[target] = output
+
+def run(fname=mainrunner, ignore=[],  origin="", ignoreEvent=False):
+    global mem, memamt, packetcur, packeturls, packetfiles, alt, altvar, cur, eventfunctions
+    
+    if origin == "event" and not ignoreEvent:
+        sendevent("EVN")
+    if origin == "event":
+        ignoreEvent = True
+    
     with open(fname) as file:
         lines = file.readlines()
 
@@ -62,6 +109,7 @@ def run(fname=mainrunner, ignore=[], ignoreEvent=False):
             exit()
         try:
             memamt = lines[0].strip()[1:]
+            memamt = int(memamt)
             if memamt > len(mem):
                 for i in range(memamt - len(mem)):
                     mem.append(0)
@@ -69,8 +117,8 @@ def run(fname=mainrunner, ignore=[], ignoreEvent=False):
                 for i in range(len(mem) - memamt):
                     mem.pop()
             lines = lines[1:]
-        except TypeError:
-            rp("[red]Memory length is not a number.[/red]")
+        except Exception as e:
+            rp(f"[red]{e}[/red]")
             exit()
 
     for line in lines:
@@ -83,6 +131,9 @@ def run(fname=mainrunner, ignore=[], ignoreEvent=False):
             line = line.split("~")[0]
 
         for i in line:
+            if i in eventfunctions and not ignoreEvent:
+                sendevent(i)
+
             if i == "0":
                 if alt:
                     mem[cur] = 0
@@ -158,9 +209,6 @@ def run(fname=mainrunner, ignore=[], ignoreEvent=False):
                 alt = not alt
             elif i in addonfunctions.keys():
                 addonfunctions[i]()
-            
-            if i in eventfunctions and not ignoreEvent:
-                sendevent(i)
 
 # cursor = 0 / value = 0
 # cursor += 1 / altvar += 1
@@ -174,40 +222,13 @@ def run(fname=mainrunner, ignore=[], ignoreEvent=False):
 # skip next line if value is 0 / skip next value lines if altvar is 0
 # toggle alt
 
-# event listeners #
-with open(eventrunner) as file:
-    lines = file.readlines()
-
-for line in lines:
-    line = line.strip()
-    line = line.split("~")[0]
-    
-    if line == "":
-        continue
-
-    if line.startswith("UNIGNORE "):
-        potentialLoop = True
-        line = line.split("UNIGNORE ")[1]
-    elif line.startswith("IGNORE "):
-        potentialLoop = False
-        line = line.split("IGNORE ")[1]
-
-    node = line[0]
-
-    if node == "*":
-        target = line[1]
-        func = line[1:].split(":")[1]
-        eventfunctions[target] = func
-    elif node == "#":
-        target = line[1:4]
-        func = line[1:].split(":")[1]
-        eventfunctions[target] = func
-
 run()
+input("Press ENTER to end")
 
 """
 EVENTS
 
+EVN - event triggered
 OUT - something printed
 PAC - something about packets
 CLR - mem cleared
